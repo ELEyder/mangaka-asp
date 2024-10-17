@@ -1,0 +1,101 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/css/login/login.css" asp-append-version="true" />
+    <title>Login - Register</title>
+</head>
+<body>
+    <button class="toggle-login">Login</button>
+    <div class="wrapper">
+        <div class="from-wrapper sign-in">
+            <a href="#" class="close"><i class="fa-solid fa-xmark"></i></a>
+            <form method="POST" id="formLogin" asp-controller="Login" asp-action="Authenticate">
+                <h2>SENATINET</h2>
+                <div class="input-group">
+                    <input id="emailLogin" type="email" name="email" required>
+                    <label for="">Email</label>
+                </div>
+                <div class="input-group">
+                    <input id="passwordLogin" type="password" name="password" required>
+                    <label for="">Password</label>
+                </div>
+                <div class="remember">
+                    <label><input type="checkbox"> Remember me</label>
+                </div>
+                <button id="submitLogin" type="submit" class="btn enabled">Login</button>
+                <div class="sign-link">
+                    <p>Don't have an account? <a href="#" class="signUp-link">Sign Up</a></p>
+                </div>
+            </form>
+            <div class="google">
+                <button class="btn-google" id="btn-google">G</button>
+            </div>
+        </div>
+
+        <div class="from-wrapper sign-up">
+            <form id="formSignUp" method="POST" asp-action="Index" asp-controller="signUp">
+                <h2>Sign Up</h2>
+                <div class="input-group">
+                    <input id="usernameSignUp" type="text" name="username" required>
+                    <label for="username">Username*</label>
+                </div>
+                <div class="input-group-names">
+                    <div class="input-group medium">
+                        <input id="firstNameSignUp" type="text" name="firstname" required>
+                        <label for="firstname">First Name*</label>
+                    </div>
+                    <div class="input-group medium">
+                        <input id="lastNameSignUp" type="text" name="lastname" required>
+                        <label for="lastname">Last Name*</label>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <input id="emailSignUp" type="email" name="email" required>
+                    <label for="email">Email*</label>
+                </div>
+                <div class="input-group">
+                    <input id="passwordSignUp1" type="password" name="password1" required>
+                    <label for="password1">Password*</label>
+                </div>
+                <div class="input-group">
+                    <input id="passwordSignUp2" type="password" name="password2" required>
+                    <label for="password2">Password*</label>
+                </div>
+                <div class="remember">
+                    <label><input type="checkbox" required> I agree to the terms & conditions</label>
+                </div>
+                <button id="submitSignUp" type="submit" class="btn enabled">Sign Up</button>
+                <div class="sign-link">
+                    <p>Don't have an account? <a href="#" class="signIn-link">Sign In</a></p>
+                </div>
+            </form>
+        </div>
+
+        <div class="bg"></div>
+        <span style="--i:10"></span>
+        <span style="--i:9"></span>
+        <span style="--i:8"></span>
+        <span style="--i:7"></span>
+        <span style="--i:6"></span>
+        <span style="--i:5"></span>
+        <span style="--i:4"></span>
+        <span style="--i:3"></span>
+        <span style="--i:2"></span>
+        <span style="--i:1"></span>
+    </div>
+    <script type="module" src="~/js/login/design.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.1/firebase-firestore-compat.js"></script>
+    <script type="module" src="~/js/firebaseApp.js"></script>
+    <script type="module" src="~/js/login/login.js"></script>
+    <script type="module" src="~/js/login/loginGoogle.js"></script>
+    <script type="module" src="~/js/login/signUp.js"></script>
+</body>
+</html>
