@@ -7,6 +7,7 @@ builder.Services.AddDbContext<MiDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 // Agregar servicios al contenedor
+builder.Services.AddHttpClient();
 builder.Services.AddControllersWithViews();
 builder.Services.AddSession(); // Habilitar sesiones
 

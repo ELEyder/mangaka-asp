@@ -1,3 +1,14 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
+@model string
+<h1>Últimos Mangas</h1>
+@foreach (string title in ViewBag.Titles)
+{
+    <h1>@title</h1>
+}
+@foreach (string link in ViewBag.Links)
+{
+    <h1>@link</h1>
+
+}
