@@ -25,7 +25,7 @@ nav.header {
     justify-content: space-evenly;
     list-style-type: none;
 }
-li.option {
+.option {
     height: 70px;
     padding: 20px 40px;
     display: flex;
@@ -34,17 +34,17 @@ li.option {
     cursor: pointer;
     transition: ease 0.2s;
 }
-li.option:hover {
+.option:hover {
     background: var(--color-dark);
 }
 
-a.text-option {
+.text-option {
     color: white;
     font-weight: 500;
     font-size: 1.2rem;
 }
 
-a.text-option:hover {
+.text-option:hover {
     color: white;
     text-decoration: none;
     font-weight: 500;

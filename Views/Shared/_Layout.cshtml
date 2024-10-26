@@ -19,26 +19,26 @@
                 <img class="logo" src="~/favicon.ico" alt="Alternate Text" />
                 <h1 class="title">MANGAKA</h1>
             </div>
-            <ul class="content-options">
-                <li class="option">
-                    <a class="text-option" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                </li>
+            <div class="content-options">
+                <a class="option" asp-area="" asp-controller="Home" asp-action="Index">
+                    <span class="text-option">Home</span>
+                </a>
                 @if (userSessionData != null && userSessionData.Name != "Anónimo")
                 {
-                    <li class="option">
-                        <a class="text-option" href="#">@userSessionData.Name</a>
-                        
-                    </li>
-                    <li class="option">
-                        <a class="text-option" asp-area="" asp-controller="Logout" asp-action="Index">Cerrar</a>
-                    </li>
+                    <a class="option" href="#">
+                        <span class="text-option">@userSessionData.Name</span>
+                    </a>
+
+                    <a class="option" asp-area="" asp-controller="Logout" asp-action="Index">
+                        <span class="text-option">Cerrar</span>
+                        </a>
                 } else
                 {
-                <li class="option">
-                    <a class="text-option" asp-area="" asp-controller="Login" asp-action="Index">Iniciar Sesión</a>
-                </li>    
+                    <a class="option" asp-area="" asp-controller="Login" asp-action="Index">
+                        <span class="text-option">Login</span>
+                    </a>
                 }
-            </ul>
+            </div>
         </nav>
     </header>
     <div>

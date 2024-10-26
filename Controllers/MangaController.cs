@@ -9,6 +9,7 @@ namespace Mangaka.Controllers
 {
     public class MangaController : Controller
     {
+        public string apiUrl = "https://www.animeallstar20.com/feeds/posts/default/-/Nuevo?max-results=60&orderby=published&alt=json";
         public readonly HttpClient _httpClient;
         public MangaController(HttpClient httpClient)
         {
@@ -18,7 +19,6 @@ namespace Mangaka.Controllers
         public async Task<IActionResult> Index(string titleManga)
         {
             Manga manga = new Manga();
-            string apiUrl = "https://www.animeallstar20.com/feeds/posts/default/-/Nuevo?max-results=30&orderby=published&alt=json";
             var response = await _httpClient.GetStringAsync(apiUrl);
             var data = JObject.Parse(response);
             var entries = data["feed"]?["entry"];

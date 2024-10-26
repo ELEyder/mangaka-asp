@@ -25,7 +25,7 @@ namespace Mangaka.Controllers
         [HttpPost]
         public async Task<IActionResult> Authenticate([FromBody] Login loginModel)
         {
-
+            return Ok(new { redirectUrl = Url.Action("Index", "Home") });
             try
             {
                 if (!ModelState.IsValid)

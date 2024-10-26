@@ -38,7 +38,7 @@
         </div>
 
         <div class="from-wrapper sign-up">
-            <form id="formSignUp" method="POST" asp-action="Index" asp-controller="signUp">
+            <form id="formSignUp" method="POST" asp-action="Register" asp-controller="Register">
                 <h2>Sign Up</h2>
                 <div class="input-group">
                     <input id="usernameSignUp" type="text" name="username" required>
@@ -49,12 +49,12 @@
                     <label for="email">Email*</label>
                 </div>
                 <div class="input-group">
-                    <input id="passwordSignUp1" type="password" name="password1" required>
-                    <label for="password1">Password*</label>
+                    <input id="passwordSignUp1" type="password" name="password" required>
+                    <label for="password">Password*</label>
                 </div>
                 <div class="input-group">
-                    <input id="passwordSignUp2" type="password" name="password2" required>
-                    <label for="password2">Repeat Password*</label>
+                    <input id="passwordSignUp2" type="password" name="repeatPassword" required>
+                    <label for="repeatPassword">Repeat Password*</label>
                 </div>
                 <div class="remember">
                     <label><input type="checkbox" required> I agree to the terms & conditions</label>
@@ -80,6 +80,6 @@
     </div>
     <script type="module" src="~/js/login/index.js"></script>
     <script type="module" src="~/js/login/login.js"></script>
-    @* <script type="module" src="~/js/login/signUp.js"></script> *@
+    <script type="module" src="~/js/register/register.js"></script>
 </body>
 </html>
