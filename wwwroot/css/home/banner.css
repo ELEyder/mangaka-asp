@@ -1,0 +1,25 @@
+﻿.carousel {
+    max-height: calc(100vh - 70px);
+    background: black;
+}
+.banner {
+    max-height: calc(100vh - 70px);
+}
+.img-banner {
+    width: 100%;
+    aspect-ratio: 1/1;
+    max-height: calc(100vh - 70px);
+    object-fit: cover;
+    object-position: center;
+    opacity: 0.5;
+}
+
+.logo-banner {
+    width: 350px;
+    position: relative;
+    bottom: 200px;
+    left: 50%;
+    transform: translateX(-50%);
+    object-position: center;
+}
+

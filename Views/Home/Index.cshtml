@@ -1,14 +1,69 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
+    var mangas = ViewBag.Mangas as List<Manga>;
 }
-@model string
-<h1>Últimos Mangas</h1>
-@foreach (string title in ViewBag.Titles)
-{
-    <h1>@title</h1>
-}
-@foreach (string link in ViewBag.Links)
-{
-    <h1>@link</h1>
+<link rel="stylesheet" href="~/css/home/home.css" asp-append-version="true" />
+<link rel="stylesheet" href="~/css/home/banner.css" asp-append-version="true" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-}
+<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <div class="d-block w-100 banner">
+                <img class="img-banner" src="img/banners/1.jpg" alt="1 slide" />
+                <img class="logo-banner" src="img/logos/1.png" alt="1 logo" />
+            </div>
+        </div>
+        <div class="carousel-item">
+            <div class="d-block w-100 banner">
+                <img class="img-banner" src="img/banners/2.jpg" alt="2 slide" />
+                <img class="logo-banner" src="img/logos/2.png" alt="2 logo" />
+            </div>
+        </div>
+        <div class="carousel-item">
+            <div class="d-block w-100 banner">
+                <img class="img-banner" src="img/banners/3.jpg" alt="3 slide" />
+                <img class="logo-banner" src="img/logos/3.png" alt="3 logo" />
+            </div>
+        </div>
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div>
+
+<div class="mangas">
+    <h1 class="subtitle">Últimos capítulos subidos</h1>
+    <div class="content">
+        @if (mangas != null)
+        {
+            @foreach (Manga manga in mangas)
+            {
+                <a class="text-option" asp-area="" asp-controller="Manga" asp-action="Index" asp-route-titleManga="@manga.Title">
+                    <div class="card-manga">
+                        <img class="img-manga" src="@manga.Img" alt="Alternate Text" />
+                        <div class="details">
+                            <p class="title-manga">@manga.Title</p>
+                        </div>
+                    </div>
+                </a>
+            }
+        } else
+        {
+            <h1>Error</h1>
+        }
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>

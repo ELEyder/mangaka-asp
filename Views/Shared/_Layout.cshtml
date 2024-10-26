@@ -1,4 +1,10 @@
-﻿<!DOCTYPE html>
+﻿@using System.Text.Json
+@using Microsoft.AspNetCore.Http
+@{
+    var userDataJson = Context.Session.GetString("userDataJson");
+    var userSessionData = string.IsNullOrEmpty(userDataJson) ? null : JsonSerializer.Deserialize<User>(userDataJson);
+}
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -8,31 +14,40 @@
 </head>
 <body>
     <header>
-        <nav>
-            <ul>
-                <li>
-                    <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+        <nav class="header">
+            <div class="content-title">
+                <img class="logo" src="~/favicon.ico" alt="Alternate Text" />
+                <h1 class="title">MANGAKA</h1>
+            </div>
+            <ul class="content-options">
+                <li class="option">
+                    <a class="text-option" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                 </li>
-                <li class="content-title">
-                    <h1 class="title">MANGAKA</h1>
-                </li>
-                <li>
-                    <a class="nav-link text-dark" asp-area="" asp-controller="Login" asp-action="Index">Login</a>
-                </li>
+                @if (userSessionData != null && userSessionData.Name != null)
+                {
+                    <li class="option">
+                        <a class="text-option" asp-area="" asp-controller="Login" asp-action="Index">@userSessionData.Name</a>
+                    </li>
+                } else
+                {
+                <li class="option">
+                    <a class="text-option" asp-area="" asp-controller="Login" asp-action="Index">Login</a>
+                </li>    
+                }
             </ul>
         </nav>
     </header>
-    <div class="container">
-        <main role="main" class="pb-3">
+    <div>
+        <main role="main">
             @RenderBody()
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
+    @* <footer class="border-top footer text-muted">
         <div class="container">
             &copy; 2024 - Mangaka - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
-    </footer>
+    </footer> *@
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

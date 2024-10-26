@@ -1,7 +1,9 @@
+using Mangaka.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using System.Text.RegularExpressions;
 
 namespace Mangaka.Controllers
 {
@@ -18,42 +20,49 @@ namespace Mangaka.Controllers
 
         public async Task<IActionResult> Index()
         {
-            string url = "https://www.animeallstar20.com/feeds/posts/default/-/Nuevo?max-results=30&orderby=published&alt=json";
-            var response = await _httpClient.GetStringAsync(url);
-            string json = response;
-            var data = JObject.Parse(json);
+            string apiUrl = "https://www.animeallstar20.com/feeds/posts/default/-/Nuevo?max-results=30&orderby=published&alt=json";
+            var response = await _httpClient.GetStringAsync(apiUrl);
+            var data = JObject.Parse(response);
             var entries = data["feed"]?["entry"];
-            var links = new List<string>();
-            var titles = new List<string>();
+            var mangas = new List<Manga>();
             if (entries != null && entries.Any())
             {
                 foreach (var entry in entries)
                 {
+                    Manga manga = new Manga();
+                    var alternativeLinks = entry["link"];
                     var title = entry["title"]?["$t"]?.ToString();
+                    var img = entry["content"]?["$t"]?.ToString();
+                    Regex regex = new Regex("src=\"(.*?)\"");
+                    MatchCollection matches = regex.Matches(img);
+                    img = matches.Count > 0 ? matches[0].Groups[1].Value : null;
+
                     if (!string.IsNullOrEmpty(title))
                     {
-                        titles.Add(title);
+                        manga.Title = title;
                     }
-                        var alternativeLinks = entry["link"];
+                    if (!string.IsNullOrEmpty(img))
+                    {
+                        manga.Img = img;
+                    }
                     if (alternativeLinks != null)
                     {
                         foreach (var link in alternativeLinks)
                         {
                             if (link["rel"]?.ToString() == "alternate")
                             {
-                                var href = link["href"]?.ToString();
-                                if (!string.IsNullOrEmpty(href))
+                                var url = link["href"]?.ToString();
+                                if (!string.IsNullOrEmpty(url))
                                 {
-                                    links.Add(href);
+                                    manga.Url = url;
                                 }
                             }
                         }
                     }
+                    mangas.Add(manga);
                 }
             }
-
-            ViewBag.Titles = titles;
-            ViewBag.Links = links;
+            ViewBag.Mangas = mangas;
             return View();
         }
     }

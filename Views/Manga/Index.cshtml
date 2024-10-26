@@ -1,0 +1,15 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    Manga manga = ViewBag.Manga;
+}
+<link href="~/css/manga/manga.css" rel="stylesheet" />
+<div class="content">
+    <h1 class="subtitle">
+        @manga.Title
+    </h1>
+    @foreach (string chapter in manga.Chapter)
+    {
+        <img class="page" src="@chapter" />
+    }
+
+</div>

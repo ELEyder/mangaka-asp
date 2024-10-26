@@ -1,7 +1,7 @@
 ﻿@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
 
 :root {
-    --color-primary: #DA5559;
+    --color-primary: #cc464b;
     --color-secondary: #f18df2;
     --color-dark: #371617;
     --color-medium: #049dd9;
@@ -19,8 +19,8 @@
 }
 
 html {
-    font-size: 16px;
-    font-family: var(--poppins);
+    font-size: 16px !important;
+    font-family: var(--poppins) !important;
 }
 a {
     text-decoration: none;

@@ -2,27 +2,48 @@
 body {
     min-height: 100vh;
 }
-
-nav {
-    height: 70px
+main {
+    padding: 0px;
+    margin: 0px;
 }
-ul {
+nav.header {
+    height: 70px;
+    background-color: var(--color-primary);
+    justify-content: space-between;
+    display: flex;
+    flex-direction: row;
+    padding: 0px 20px;
+}
+.logo {
+    width: 70px;
+}
+.content-options {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
+    gap: 20px;
     list-style-type: none;
 }
-li {
+li.option {
     height: 70px;
-    align-content: center;
+    padding: 20px;
+    display: flex;
+    align-items: center; /* Centra verticalmente */
+    justify-content: center;
 }
-a {
-    color: black;
+a.text-option {
+    color: white;
+    font-weight: 500;
+    font-size: 1.2rem;
+}
+
+a.text-option:hover {
+    color: white;
+    text-decoration: none;
     font-weight: 500;
 }
 
 .content-title {
-    background-color: red;
     color: white;
     display: flex;
     align-items: center;
@@ -33,4 +54,7 @@ a {
     font-size: 1.5rem;
     color: white;
     font-style: italic;
+    margin: 0px;
+    font-family: var(--poppins);
 }
+

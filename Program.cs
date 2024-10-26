@@ -1,6 +1,17 @@
+using Mangaka.Middlewares;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
+
+// Cache
+builder.Services.AddDistributedMemoryCache();
+builder.Services.AddSession(options =>
+{
+    options.IdleTimeout = TimeSpan.FromMinutes(30); // Duración de la sesión
+    options.Cookie.HttpOnly = true; // La cookie no es accesible a través de JavaScript
+    options.Cookie.IsEssential = true; // Necesario para cumplir con la política de cookies
+});
+
 
 // Configuración de DbContext
 builder.Services.AddDbContext<MiDbContext>(options =>
@@ -26,6 +37,7 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseSession(); // Habilitar sesiones
+app.UseMiddleware<SessionInitializerMiddleware>();
 
 app.UseAuthorization();
 

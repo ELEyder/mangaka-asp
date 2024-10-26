@@ -1,0 +1,51 @@
+﻿@import url("banner.css");
+.subtitle {
+    color: white;
+    padding: 20px;
+    margin: 0;
+}
+
+.mangas {
+    background: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px;
+}
+.content {
+    padding: 20px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: auto;
+    gap: 20px;
+    align-items: center;
+    align-content: space-evenly;
+    justify-content: space-evenly;
+}
+
+.card-manga {
+    display: flex;
+    flex-direction: row;
+    width: 392px;
+    height: 150px;
+    /*    border: 1px solid black;
+    border-radius: 10px;*/
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.img-manga {
+    height: 100%;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+}
+
+.details {
+    padding: 10px;
+}
+
+.title-manga {
+    color: white;
+}
