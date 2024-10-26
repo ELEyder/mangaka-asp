@@ -23,15 +23,19 @@
                 <li class="option">
                     <a class="text-option" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                 </li>
-                @if (userSessionData != null && userSessionData.Name != null)
+                @if (userSessionData != null && userSessionData.Name != "Anónimo")
                 {
                     <li class="option">
-                        <a class="text-option" asp-area="" asp-controller="Login" asp-action="Index">@userSessionData.Name</a>
+                        <a class="text-option" href="#">@userSessionData.Name</a>
+                        
+                    </li>
+                    <li class="option">
+                        <a class="text-option" asp-area="" asp-controller="Logout" asp-action="Index">Cerrar</a>
                     </li>
                 } else
                 {
                 <li class="option">
-                    <a class="text-option" asp-area="" asp-controller="Login" asp-action="Index">Login</a>
+                    <a class="text-option" asp-area="" asp-controller="Login" asp-action="Index">Iniciar Sesión</a>
                 </li>    
                 }
             </ul>
