@@ -1,5 +1,5 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Inicio";
     var mangas = ViewBag.Mangas as List<Manga>;
 }
 <link rel="stylesheet" href="~/css/home/home.css" asp-append-version="true" />
@@ -43,7 +43,7 @@
 </div>
 
 <div class="mangas">
-    <h1 class="subtitle">Últimos capítulos subidos</h1>
+    <h1 class="subtitle"><span>Ú</span>ltimos capítulos subidos</h1>
     <div class="content">
         @if (mangas != null)
         {

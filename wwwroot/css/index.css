@@ -1,18 +1,20 @@
 ﻿@import url("root.css");
 body {
     min-height: 100vh;
+    background: black;
 }
+
 main {
     padding: 0px;
     margin: 0px;
 }
+
 nav.header {
     height: 70px;
     background-color: var(--color-primary);
     justify-content: space-between;
     display: flex;
     flex-direction: row;
-    padding: 0px 20px;
 }
 .logo {
     width: 70px;
@@ -21,16 +23,21 @@ nav.header {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-    gap: 20px;
     list-style-type: none;
 }
 li.option {
     height: 70px;
-    padding: 20px;
+    padding: 20px 40px;
     display: flex;
     align-items: center; /* Centra verticalmente */
     justify-content: center;
+    cursor: pointer;
+    transition: ease 0.2s;
 }
+li.option:hover {
+    background: var(--color-dark);
+}
+
 a.text-option {
     color: white;
     font-weight: 500;
@@ -48,7 +55,11 @@ a.text-option:hover {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 20px;
+    padding: 0 20px;
+}
+.content-title:hover {
+    background: var(--color-dark);
+    cursor: pointer;
 }
 .title {
     font-size: 1.5rem;
@@ -56,5 +67,19 @@ a.text-option:hover {
     font-style: italic;
     margin: 0px;
     font-family: var(--poppins);
+    margin: 0 10px 0 0;
 }
 
+footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: black;
+    padding: 20px;
+}
+.final-text {
+    color: var(--color-primary);
+    margin: 0;
+    font-weight: 500;
+    text-align: center;
+}
