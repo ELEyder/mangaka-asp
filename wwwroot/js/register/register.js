@@ -55,9 +55,9 @@ async function register(username, email, password, repeatPassword) {
         return false;
     }
 
-    const data = await response.json(); // Procesa la respuesta JSON
+    const data = await response.json();
     if (data.redirectUrl) {
-        window.location.href = data.redirectUrl; // Redirige a la URL proporcionada
+        window.location.href = data.redirectUrl;
     }
 
     return true;
